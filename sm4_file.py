@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+
 import json
 import os.path
 import re
@@ -20,7 +21,7 @@ class SM4File:
         # 调用Tk()创建主窗口
         self.window = tk.Tk()
         # 设置窗口居中
-        self.window_center(500, 340)
+        self.window_center(488, 400)
         # 设置窗口不可拉伸
         self.window.resizable(False, False)
         # 设置窗口左上角的名字
@@ -32,12 +33,12 @@ class SM4File:
         window = self.window
 
         # 绘制提示标签
-        tk.Label(window, text='文件路径:', width=10, height=2, anchor='w').grid(row=0, column=0, padx=10)
-        tk.Label(window, text='输出路径:', width=10, height=2, anchor='w').grid(row=1, column=0, padx=10)
-        tk.Label(window, text='密钥 Key:', width=10, height=2, anchor='w').grid(row=2, column=0, padx=10)
-        tk.Label(window, text='初始向量 IV:', width=10, height=2, anchor='w').grid(row=3, column=0, padx=10)
-        tk.Label(window, text='计数 Nonce:', width=10, height=2, anchor='w').grid(row=4, column=0, padx=10)
-        tk.Label(window, text='加/解密进度:', width=10, height=2, anchor='w').grid(row=7, column=0, padx=10)
+        tk.Label(window, text='文件路径:', width=10, height=2, anchor='w').grid(row=0, column=0, padx=10,pady=5)
+        tk.Label(window, text='输出路径:', width=10, height=2, anchor='w').grid(row=1, column=0, padx=10,pady=5)
+        tk.Label(window, text='密钥 Key:', width=10, height=2, anchor='w').grid(row=2, column=0, padx=10,pady=5)
+        tk.Label(window, text='初始向量 IV:', width=10, height=2, anchor='w').grid(row=3, column=0, padx=10,pady=5)
+        tk.Label(window, text='计数 Nonce:', width=10, height=2, anchor='w').grid(row=4, column=0, padx=10,pady=5)
+        tk.Label(window, text='加/解密进度:', width=10, height=2, anchor='w').grid(row=7, column=0, padx=10,pady=5)
 
         # 声明文本变量
         self.file_path = tk.StringVar()
@@ -60,8 +61,8 @@ class SM4File:
         self.now_size_str = ""
 
         # 绘制路径文本框
-        tk.Entry(window, text=self.file_path, width=42, state='readonly').grid(row=0, column=1, columnspan=3)
-        tk.Entry(window, text=self.dic_path, width=42, state='readonly').grid(row=1, column=1, columnspan=3)
+        tk.Entry(window, text=self.file_path, width=42, state='readonly').grid(row=0, column=1, columnspan=3, pady=5)
+        tk.Entry(window, text=self.dic_path, width=42, state='readonly').grid(row=1, column=1, columnspan=3, pady=5)
 
         # 绘制路径选择按钮
         tk.Button(window, text='选择文件', command=self.get_file_path).grid(row=0, column=4, padx=10, pady=5)
@@ -73,9 +74,9 @@ class SM4File:
         tk.Button(window, text='随机生成', command=lambda: self.random_num(2)).grid(row=4, column=4, padx=10, pady=5)
 
         # 绘制密钥文本框
-        tk.Entry(window, text=self.key_string, width=42).grid(row=2, column=1, columnspan=3)
-        tk.Entry(window, text=self.iv_string, width=42).grid(row=3, column=1, columnspan=3)
-        tk.Entry(window, text=self.nonce_string, width=42).grid(row=4, column=1, columnspan=3)
+        tk.Entry(window, text=self.key_string, width=42).grid(row=2, column=1, columnspan=3, pady=5)
+        tk.Entry(window, text=self.iv_string, width=42).grid(row=3, column=1, columnspan=3, pady=5)
+        tk.Entry(window, text=self.nonce_string, width=42).grid(row=4, column=1, columnspan=3, pady=5)
 
         # 绘制加密按钮
         tk.Button(window, text='ECB加密', command=lambda: self.crypt(SM4_ECB_MODE, True)).grid(row=5, column=0, pady=10)
