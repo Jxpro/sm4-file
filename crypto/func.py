@@ -1,4 +1,10 @@
 # -*-coding:utf-8-*-
+from crypto.gf import gf_mul
+
+
+def gf_mul_128(a, b):
+    return gf_mul(a, b, 340282366920938463463374607431768211591)
+
 
 def xor_list(a, b):
     return [a[i] ^ b[i] for i in range(min(len(a), len(b)))]
